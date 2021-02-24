@@ -8,7 +8,7 @@ public class WhileExample {
 			sum = sum + i ;
 			i++;
 			}
-		System.out.println("1 ~ 10 합: " + sum);
+		System.out.println("1 ~ 10 합: " + sum );
 		i = 1;
 		sum = 0;
 		while (true) {
