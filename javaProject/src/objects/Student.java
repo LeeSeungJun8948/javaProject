@@ -8,7 +8,7 @@ public class Student {
 	int eng;
 	
 	//생성자 : 필드 값을 초기화 할때 사용
-	Student() {
+	public Student() {
 		System.out.println("생성자를 호출합니다.");
 	}
 	
@@ -22,15 +22,15 @@ public class Student {
 		this.math = math;
 	}
 	
-	void study() { // study라는 기능을 담당하는 메소드
+	public void study() { // study라는 기능을 담당하는 메소드
 		System.out.println("공부합니다.");
 	}
 	
-	void run() { 
+	public void run() { 
 		System.out.println("운동을 합니다.");
 	}
 	
-	void introduce() {
+	public void introduce() {
 		System.out.println("학번: " + studentNo  + ", " + "학년: " + grade + ", " + "영어점수: " + eng + ", " + "수학점수: " + math);
 	}
 }
