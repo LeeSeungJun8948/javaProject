@@ -1,5 +1,6 @@
 package objects2;
 
+import java.util.Arrays;
 /*1. 제목 저자 출판사 가격 입력
 2. 회원정보 - 이름,id(1사람만) 책대여[5]
 3. 도서대여 - 책 제목을 찾아서 대여해줌 ( 없으면 " 책없음" 출력)
@@ -11,8 +12,8 @@ import java.util.Scanner;
 public class BookExe {
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
-		Book b1 = new Book("자바", "이창우", "한빛", 1000);
-		Book b2 = new Book("자바3", "정종현", "한빛", 3000);
+		Book b1 = new Book(null, null, null, 0);
+		Book b2 = new Book(null, null, null, 0);
 		Book b3 = new Book(null, null, null, 0);
 		Book b4 = new Book(null, null, null, 0);
 		Book b5 = new Book(null, null, null, 0);
@@ -48,28 +49,33 @@ public class BookExe {
 					bookList[i].setCompany(scn.next());
 					System.out.print("가격을 입력하세요 > ");
 					bookList[i].setSell(scn.nextInt());
-					System.out.println("더 입력 하시겠습니까? ");
-					break;
+					System.out.println("입력을 종료 하려면 0을 눌러주세요. / 계속 입력하려면 아무숫자나 누르세요 > ");
+					int a = scn.nextInt();
+					if (a == 0) {
+						break;
+					} else {
+					}
 				}
 			} else if (menu == 2) {
 				System.out.print("회원 ID를 입력하세요 > ");
 				user.setId(scn.next());
 				System.out.print("회원 이름을 입력하세요 > ");
 				user.setName(scn.next());
-				
 			} else if (menu == 3) {
 				System.out.print("대여 할 책제목을 입력 하세요 > ");
 				String checkName = scn.next();
 				for (int i = 0; i < bookList.length; i++) {
-					if (checkName == bookList[i].getBookName()) {
+					if (bookList[i].getBookName() == checkName) {
 						user.rent(bookList[i]);
-						System.out.println(bookList[i].getBookName() +" 을/를 대여 하였습니다.");
+						
 					} else {
 						System.out.println("책없음");
+						break;
 					}
+
 				}
 			} else if (menu == 4) {
-				
+
 			} else if (menu == 5) {
 				System.out.println(bookList[0]);
 				user.getBookInfo();
