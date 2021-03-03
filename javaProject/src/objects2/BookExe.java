@@ -67,18 +67,15 @@ public class BookExe {
 				for (int i = 0; i < bookList.length; i++) {
 					if (bookList[i].getBookName() == checkName) {
 						user.rent(bookList[i]);
-						
-					} else {
-						System.out.println("책없음");
-						break;
 					}
-
+					else {
+			
+					}
 				}
 			} else if (menu == 4) {
 
 			} else if (menu == 5) {
-				System.out.println(bookList[0]);
-				user.getBookInfo();
+
 			}
 		}
 	}
