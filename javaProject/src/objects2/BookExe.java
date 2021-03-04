@@ -1,3 +1,4 @@
+
 package objects2;
 
 import java.util.Arrays;
@@ -12,27 +13,7 @@ import java.util.Scanner;
 public class BookExe {
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
-		Book b1 = new Book(null, null, null, 0);
-		Book b2 = new Book(null, null, null, 0);
-		Book b3 = new Book(null, null, null, 0);
-		Book b4 = new Book(null, null, null, 0);
-		Book b5 = new Book(null, null, null, 0);
-		Book b6 = new Book(null, null, null, 0);
-		Book b7 = new Book(null, null, null, 0);
-		Book b8 = new Book(null, null, null, 0);
-		Book b9 = new Book(null, null, null, 0);
-		Book b10 = new Book(null, null, null, 0);
 		Book[] bookList = new Book[10];
-		bookList[0] = b1;
-		bookList[1] = b2;
-		bookList[2] = b3;
-		bookList[3] = b4;
-		bookList[4] = b5;
-		bookList[5] = b6;
-		bookList[6] = b7;
-		bookList[7] = b8;
-		bookList[8] = b9;
-		bookList[9] = b10;
 		Member user = new Member();
 
 		while (true) {
@@ -41,14 +22,17 @@ public class BookExe {
 			int menu = scn.nextInt();
 			if (menu == 1) {
 				for (int i = 0; i < bookList.length; i++) {
+
 					System.out.print("제목을 입력하세요 > ");
-					bookList[i].setBookName(scn.next());
+					String title = scn.next();
 					System.out.print("저자를 입력하세요 > ");
-					bookList[i].setAuthor(scn.next());
+					String name = scn.next();
 					System.out.print("출판사를 입력하세요 > ");
-					bookList[i].setCompany(scn.next());
+					String com = scn.next();
 					System.out.print("가격을 입력하세요 > ");
-					bookList[i].setSell(scn.nextInt());
+					int sell = scn.nextInt();
+					Book book = new Book(title, name, com, sell);
+					bookList[i] = book;
 					System.out.println("입력을 종료 하려면 0을 눌러주세요. / 계속 입력하려면 아무숫자나 누르세요 > ");
 					int a = scn.nextInt();
 					if (a == 0) {
@@ -64,19 +48,38 @@ public class BookExe {
 			} else if (menu == 3) {
 				System.out.print("대여 할 책제목을 입력 하세요 > ");
 				String checkName = scn.next();
+				int cnt = 0;
 				for (int i = 0; i < bookList.length; i++) {
-					if (bookList[i].getBookName() == checkName) {
+					if (bookList[i] != null && bookList[i].getBookName().equals(checkName)) {
+						cnt++;
 						user.rent(bookList[i]);
-					}
-					else {
-			
+						break;
 					}
 				}
+				if (cnt == 0) {
+					System.out.println("없는 책 입니다.");
+				}
 			} else if (menu == 4) {
-
+				System.out.print("반납 할 책제목을 입력 하세요 > ");
+				String checkName = scn.next();
+				int cnt = 0;
+				for (int i = 0; i < bookList.length; i++) {
+					if (bookList[i] != null && bookList[i].getBookName().equals(checkName)) {
+						cnt++;
+						user.overdue(bookList[i]);
+						break;
+					}
+				}
+				if (cnt == 0) {
+					System.out.println("없는 책 입니다.");
+				}
 			} else if (menu == 5) {
+				user.getBookInfo();
 
+			} else if (menu == 6) {
+				break;
 			}
+			System.out.println("프로그램 종료");
 		}
 	}
 }
