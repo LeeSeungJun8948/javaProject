@@ -5,7 +5,7 @@ import java.util.Calendar;
 public class CalendarExe {
 	public static void main(String[] args) {
 		
-		showCal(2021, 5);
+		showCal(2021, 6);
 	}
 	// 오늘날짜 기준 0 1 2 3 4 5 6 7 8 9
 
